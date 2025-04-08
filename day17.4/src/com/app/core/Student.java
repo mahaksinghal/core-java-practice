@@ -1,0 +1,37 @@
+package com.app.core;
+
+public class Student  implements Cloneable  {
+	private int rollNo;
+	private Address adr;
+
+	public Student(int rollNo) {
+		super();
+		this.rollNo = rollNo;
+	}
+
+	public void setAdr(Address adr) {
+		this.adr = adr;
+	}
+
+	@Override
+	public String toString() {
+		return "Student rollNo=" + rollNo + " " + adr;
+	}
+
+	public void setRollNo(int rollNo) {
+		this.rollNo = rollNo;
+	}
+
+	public Address getAdr() {
+		return adr;
+	}
+	
+	// deep copy
+	@Override
+	public  Student clone() throws CloneNotSupportedException
+	{
+		Student clonedStudent = (Student) super.clone();
+		clonedStudent.setAdr(this.adr.clone());
+		return clonedStudent;
+	}
+}
